@@ -1,83 +1,567 @@
 import React from "react";
+import { DataGrid } from "@mui/x-data-grid";
+import "./Firstpage.css";
 
 function Firstpage() {
+  const columns = [
+    { field: "id", headerName: "ID", width: 70 },
+    { field: "firstName", headerName: "First name", width: 130 },
+    { field: "lastName", headerName: "Last name", width: 130 },
+
+    {
+      field: "phone",
+      headerName: "Work phone",
+      type: "number",
+      width: 120,
+    },
+
+    {
+      field: "industry",
+      headerName: "Industry",
+      width: 130,
+    },
+
+    {
+      field: "address",
+      headerName: "Address",
+      width: 130,
+    },
+
+    {
+      field: "fullName",
+      headerName: "Full name",
+      description: "This column has a value getter and is not sortable.",
+      sortable: false,
+      width: 160,
+      valueGetter: (params) =>
+        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+    },
+  ];
+
+  const rows = [
+    {
+      id: 1,
+
+      firstName: "Amjad",
+      lastName: "Khan",
+      industry: "Tracking",
+      address: "Amjad Road",
+      phone: "0423233432",
+    },
+
+    {
+      id: 2,
+      firstName: "Faizan",
+      lastName: "Ali",
+      industry: "Rapido",
+      address: "Shar-e-Faisal",
+      phone: "0423233432",
+    },
+    {
+      id: 3,
+      firstName: "Salman",
+      lastName: "Khan",
+      industry: "Rapido",
+      address: "Shar-e-Faisal",
+      phone: "0423233432",
+    },
+    {
+      id: 4,
+      firstName: "Arya",
+      lastName: "Aryan",
+      industry: "Rapido",
+      address: "Shar-e-Faisal",
+      phone: "0423233432",
+    },
+    {
+      id: 5,
+      firstName: "paul",
+      lastName: "Pogba",
+      industry: "Rapido",
+      address: "Shar-e-Faisal",
+      phone: "0423233432",
+    },
+    {
+      id: 6,
+      firstName: "Safan",
+      lastName: "Ahmed",
+      industry: "Rapido",
+      address: "Shar-e-Faisal",
+    },
+    {
+      id: 7,
+      firstName: "Ferrara",
+      lastName: "prera",
+      industry: "Rapido",
+      address: "Shar-e-Faisal",
+    },
+    {
+      id: 8,
+      firstName: "Rossini",
+      lastName: "Moti",
+      industry: "Rapido",
+      address: "Shar-e-Faisal",
+    },
+    {
+      id: 9,
+      firstName: "Harvey",
+      lastName: "Lolo",
+      industry: "Rapido",
+      address: "Shar-e-Faisal",
+    },
+    {
+      id: 10,
+      firstName: "Harvey",
+      lastName: "Lolo",
+      industry: "Rapido",
+      address: "Shar-e-Faisal",
+    },
+    {
+      id: 11,
+      firstName: "Harvey",
+      lastName: "Lolo",
+      industry: "Rapido",
+      address: "Shar-e-Faisal",
+    },
+  ];
+
   return (
     <>
       <div className=" md:grid md:grid-cols-[300px_1fr] grid-cols-2 min-h-screen">
-        <div className=" bg-[#4267B2] h-full">
+        <div className=" bg-[#4267B2] rounded-xl  h-full">
           <div className="flex justify-center items-center my-5">
-            <img className="w-[100px] " src="/images/myfigma.png" alt="" />
+            <img className="w-[120px] " src="/images/myfigma.png" alt="" />
           </div>
-          <div className=" flex  gap-2 justify-start items-center my-5 px-16">
-            <img className="w-4" src="/images/dashboard.png" alt="" />
-            <p className="text-[#FFF] ">Dash Board</p>
-          </div>
-
-          <div className=" flex gap-2 justify-start items-center my-5 px-16">
-            <img className="w-4" src="/images/dashboard.png" alt="" />
-            <p className="text-[#FFF] ">Accounts</p>
-          </div>
-
-          <div className="flex gap-2 justify-start items-center my-5 px-16">
-            <img className="w-4" src="/images/dashboard.png" alt="" />
-            <p className="text-[#FFF] ">Contacts</p>
-          </div>
-
-          <div className="flex gap-2 justify-start items-center my-5 px-16">
-            <img className="w-4" src="/images/dashboard.png" alt="" />
-            <p className="text-[#FFF] ">Groups</p>
-          </div>
-
-          <div className="flex gap-2 justify-start items-center my-5 px-16">
-            <img className="w-4" src="/images/dashboard.png" alt="" />
-            <p className="text-[#FFF] ">Opportunities</p>
-          </div>
-
-          <div className="flex gap-2 justify-start items-center my-5 px-16">
-            <img className="w-4" src="/images/dashboard.png" alt="" />
-            <p className="text-[#FFF] ">Price Book</p>
-          </div>
-
-          <div className="flex gap-2 justify-start items-center my-5 px-16">
-            <img className="w-4" src="/images/dashboard.png" alt="" />
-            <p className="text-[#FFF] ">Activities</p>
+          <div className=" flex  gap-2 justify-start items-center hover:bg-[#FFFF]   my-5 px-20 group py-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 10.75H17C14.58 10.75 13.25 9.42 13.25 7V5C13.25 2.58 14.58 1.25 17 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM17 2.75C15.42 2.75 14.75 3.42 14.75 5V7C14.75 8.58 15.42 9.25 17 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 22.75H17C14.58 22.75 13.25 21.42 13.25 19V17C13.25 14.58 14.58 13.25 17 13.25H19C21.42 13.25 22.75 14.58 22.75 17V19C22.75 21.42 21.42 22.75 19 22.75ZM17 14.75C15.42 14.75 14.75 15.42 14.75 17V19C14.75 20.58 15.42 21.25 17 21.25H19C20.58 21.25 21.25 20.58 21.25 19V17C21.25 15.42 20.58 14.75 19 14.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M7 22.75H5C2.58 22.75 1.25 21.42 1.25 19V17C1.25 14.58 2.58 13.25 5 13.25H7C9.42 13.25 10.75 14.58 10.75 17V19C10.75 21.42 9.42 22.75 7 22.75ZM5 14.75C3.42 14.75 2.75 15.42 2.75 17V19C2.75 20.58 3.42 21.25 5 21.25H7C8.58 21.25 9.25 20.58 9.25 19V17C9.25 15.42 8.58 14.75 7 14.75H5Z"
+                fill="#CCD2E3"
+              />
+            </svg>
+            <p className="text-[#FFF] font-semibold group-hover:text-[blue] hover:text-[#4267B2]">
+              Dash Board
+            </p>
           </div>
 
-          <div className="flex gap-2 justify-start items-center my-5 px-16">
-            <img className="w-4" src="/images/dashboard.png" alt="" />
-            <p className="text-[#FFF] ">Admin</p>
+          <div className=" flex gap-2 justify-start items-center hover:bg-[#FFFF] my-5 px-20 group py-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 10.75H17C14.58 10.75 13.25 9.42 13.25 7V5C13.25 2.58 14.58 1.25 17 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM17 2.75C15.42 2.75 14.75 3.42 14.75 5V7C14.75 8.58 15.42 9.25 17 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 22.75H17C14.58 22.75 13.25 21.42 13.25 19V17C13.25 14.58 14.58 13.25 17 13.25H19C21.42 13.25 22.75 14.58 22.75 17V19C22.75 21.42 21.42 22.75 19 22.75ZM17 14.75C15.42 14.75 14.75 15.42 14.75 17V19C14.75 20.58 15.42 21.25 17 21.25H19C20.58 21.25 21.25 20.58 21.25 19V17C21.25 15.42 20.58 14.75 19 14.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M7 22.75H5C2.58 22.75 1.25 21.42 1.25 19V17C1.25 14.58 2.58 13.25 5 13.25H7C9.42 13.25 10.75 14.58 10.75 17V19C10.75 21.42 9.42 22.75 7 22.75ZM5 14.75C3.42 14.75 2.75 15.42 2.75 17V19C2.75 20.58 3.42 21.25 5 21.25H7C8.58 21.25 9.25 20.58 9.25 19V17C9.25 15.42 8.58 14.75 7 14.75H5Z"
+                fill="#CCD2E3"
+              />
+            </svg>
+            <p className="text-[#FFF] font-semibold group-hover:text-[blue]  ">
+              Accounts
+            </p>
           </div>
 
-          <div className="flex gap-2 justify-start items-center my-5 px-16">
-            <img className="w-4" src="/images/dashboard.png" alt="" />
-            <p className="text-[#FFF] ">Reports</p>
+          <div className="flex gap-2 justify-start items-center hover:bg-[#FFFF] my-5 px-20 group py-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 10.75H17C14.58 10.75 13.25 9.42 13.25 7V5C13.25 2.58 14.58 1.25 17 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM17 2.75C15.42 2.75 14.75 3.42 14.75 5V7C14.75 8.58 15.42 9.25 17 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 22.75H17C14.58 22.75 13.25 21.42 13.25 19V17C13.25 14.58 14.58 13.25 17 13.25H19C21.42 13.25 22.75 14.58 22.75 17V19C22.75 21.42 21.42 22.75 19 22.75ZM17 14.75C15.42 14.75 14.75 15.42 14.75 17V19C14.75 20.58 15.42 21.25 17 21.25H19C20.58 21.25 21.25 20.58 21.25 19V17C21.25 15.42 20.58 14.75 19 14.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M7 22.75H5C2.58 22.75 1.25 21.42 1.25 19V17C1.25 14.58 2.58 13.25 5 13.25H7C9.42 13.25 10.75 14.58 10.75 17V19C10.75 21.42 9.42 22.75 7 22.75ZM5 14.75C3.42 14.75 2.75 15.42 2.75 17V19C2.75 20.58 3.42 21.25 5 21.25H7C8.58 21.25 9.25 20.58 9.25 19V17C9.25 15.42 8.58 14.75 7 14.75H5Z"
+                fill="#CCD2E3"
+              />
+            </svg>
+            <p className="text-[#FFF] font-semibold group-hover:text-[blue]  ">
+              Contacts
+            </p>
           </div>
 
-          <div className="flex gap-2 justify-start items-center my-5 px-16">
-            <img className="w-4" src="/images/dashboard.png" alt="" />
-            <p className="text-[#FFF] ">Accounts Recievable</p>
+          <div className="flex gap-2 justify-start items-center hover:bg-[#FFFF] my-5 px-20 group py-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 10.75H17C14.58 10.75 13.25 9.42 13.25 7V5C13.25 2.58 14.58 1.25 17 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM17 2.75C15.42 2.75 14.75 3.42 14.75 5V7C14.75 8.58 15.42 9.25 17 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 22.75H17C14.58 22.75 13.25 21.42 13.25 19V17C13.25 14.58 14.58 13.25 17 13.25H19C21.42 13.25 22.75 14.58 22.75 17V19C22.75 21.42 21.42 22.75 19 22.75ZM17 14.75C15.42 14.75 14.75 15.42 14.75 17V19C14.75 20.58 15.42 21.25 17 21.25H19C20.58 21.25 21.25 20.58 21.25 19V17C21.25 15.42 20.58 14.75 19 14.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M7 22.75H5C2.58 22.75 1.25 21.42 1.25 19V17C1.25 14.58 2.58 13.25 5 13.25H7C9.42 13.25 10.75 14.58 10.75 17V19C10.75 21.42 9.42 22.75 7 22.75ZM5 14.75C3.42 14.75 2.75 15.42 2.75 17V19C2.75 20.58 3.42 21.25 5 21.25H7C8.58 21.25 9.25 20.58 9.25 19V17C9.25 15.42 8.58 14.75 7 14.75H5Z"
+                fill="#CCD2E3"
+              />
+            </svg>
+            <p className="text-[#FFF] font-semibold group-hover:text-[blue]  ">
+              Groups
+            </p>
           </div>
 
-          <div className="flex gap-2 justify-start items-center my-5 px-16">
-            <img className="w-4" src="/images/dashboard.png" alt="" />
-            <p className="text-[#FFF] ">Accounts Payable</p>
+          <div className="flex gap-2 justify-start items-center hover:bg-[#FFFF] my-5 px-20 group py-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 10.75H17C14.58 10.75 13.25 9.42 13.25 7V5C13.25 2.58 14.58 1.25 17 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM17 2.75C15.42 2.75 14.75 3.42 14.75 5V7C14.75 8.58 15.42 9.25 17 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 22.75H17C14.58 22.75 13.25 21.42 13.25 19V17C13.25 14.58 14.58 13.25 17 13.25H19C21.42 13.25 22.75 14.58 22.75 17V19C22.75 21.42 21.42 22.75 19 22.75ZM17 14.75C15.42 14.75 14.75 15.42 14.75 17V19C14.75 20.58 15.42 21.25 17 21.25H19C20.58 21.25 21.25 20.58 21.25 19V17C21.25 15.42 20.58 14.75 19 14.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M7 22.75H5C2.58 22.75 1.25 21.42 1.25 19V17C1.25 14.58 2.58 13.25 5 13.25H7C9.42 13.25 10.75 14.58 10.75 17V19C10.75 21.42 9.42 22.75 7 22.75ZM5 14.75C3.42 14.75 2.75 15.42 2.75 17V19C2.75 20.58 3.42 21.25 5 21.25H7C8.58 21.25 9.25 20.58 9.25 19V17C9.25 15.42 8.58 14.75 7 14.75H5Z"
+                fill="#CCD2E3"
+              />
+            </svg>
+            <p className="text-[#FFF] font-semibold group-hover:text-[blue]  ">
+              Opportunities
+            </p>
+          </div>
+
+          <div className="flex gap-2 justify-start items-center hover:bg-[#FFFF] my-5  px-20 group py-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 10.75H17C14.58 10.75 13.25 9.42 13.25 7V5C13.25 2.58 14.58 1.25 17 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM17 2.75C15.42 2.75 14.75 3.42 14.75 5V7C14.75 8.58 15.42 9.25 17 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 22.75H17C14.58 22.75 13.25 21.42 13.25 19V17C13.25 14.58 14.58 13.25 17 13.25H19C21.42 13.25 22.75 14.58 22.75 17V19C22.75 21.42 21.42 22.75 19 22.75ZM17 14.75C15.42 14.75 14.75 15.42 14.75 17V19C14.75 20.58 15.42 21.25 17 21.25H19C20.58 21.25 21.25 20.58 21.25 19V17C21.25 15.42 20.58 14.75 19 14.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M7 22.75H5C2.58 22.75 1.25 21.42 1.25 19V17C1.25 14.58 2.58 13.25 5 13.25H7C9.42 13.25 10.75 14.58 10.75 17V19C10.75 21.42 9.42 22.75 7 22.75ZM5 14.75C3.42 14.75 2.75 15.42 2.75 17V19C2.75 20.58 3.42 21.25 5 21.25H7C8.58 21.25 9.25 20.58 9.25 19V17C9.25 15.42 8.58 14.75 7 14.75H5Z"
+                fill="#CCD2E3"
+              />
+            </svg>
+            <p className="text-[#FFF] font-semibold group-hover:text-[blue]  ">
+              Price Book
+            </p>
+          </div>
+
+          <div className="flex gap-2 justify-start items-center hover:bg-[#FFFF] my-5 px-20 group py-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 10.75H17C14.58 10.75 13.25 9.42 13.25 7V5C13.25 2.58 14.58 1.25 17 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM17 2.75C15.42 2.75 14.75 3.42 14.75 5V7C14.75 8.58 15.42 9.25 17 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 22.75H17C14.58 22.75 13.25 21.42 13.25 19V17C13.25 14.58 14.58 13.25 17 13.25H19C21.42 13.25 22.75 14.58 22.75 17V19C22.75 21.42 21.42 22.75 19 22.75ZM17 14.75C15.42 14.75 14.75 15.42 14.75 17V19C14.75 20.58 15.42 21.25 17 21.25H19C20.58 21.25 21.25 20.58 21.25 19V17C21.25 15.42 20.58 14.75 19 14.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M7 22.75H5C2.58 22.75 1.25 21.42 1.25 19V17C1.25 14.58 2.58 13.25 5 13.25H7C9.42 13.25 10.75 14.58 10.75 17V19C10.75 21.42 9.42 22.75 7 22.75ZM5 14.75C3.42 14.75 2.75 15.42 2.75 17V19C2.75 20.58 3.42 21.25 5 21.25H7C8.58 21.25 9.25 20.58 9.25 19V17C9.25 15.42 8.58 14.75 7 14.75H5Z"
+                fill="#CCD2E3"
+              />
+            </svg>
+            <p className="text-[#FFF] font-semibold group-hover:text-[blue]  ">
+              Activities
+            </p>
+          </div>
+
+          <div className="flex gap-2 justify-start items-center hover:bg-[#FFFF] my-5 px-20 group py-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 10.75H17C14.58 10.75 13.25 9.42 13.25 7V5C13.25 2.58 14.58 1.25 17 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM17 2.75C15.42 2.75 14.75 3.42 14.75 5V7C14.75 8.58 15.42 9.25 17 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 22.75H17C14.58 22.75 13.25 21.42 13.25 19V17C13.25 14.58 14.58 13.25 17 13.25H19C21.42 13.25 22.75 14.58 22.75 17V19C22.75 21.42 21.42 22.75 19 22.75ZM17 14.75C15.42 14.75 14.75 15.42 14.75 17V19C14.75 20.58 15.42 21.25 17 21.25H19C20.58 21.25 21.25 20.58 21.25 19V17C21.25 15.42 20.58 14.75 19 14.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M7 22.75H5C2.58 22.75 1.25 21.42 1.25 19V17C1.25 14.58 2.58 13.25 5 13.25H7C9.42 13.25 10.75 14.58 10.75 17V19C10.75 21.42 9.42 22.75 7 22.75ZM5 14.75C3.42 14.75 2.75 15.42 2.75 17V19C2.75 20.58 3.42 21.25 5 21.25H7C8.58 21.25 9.25 20.58 9.25 19V17C9.25 15.42 8.58 14.75 7 14.75H5Z"
+                fill="#CCD2E3"
+              />
+            </svg>
+            <p className="text-[#FFF] font-semibold group-hover:text-[blue]  ">
+              Admin
+            </p>
+          </div>
+
+          <div className="flex gap-2 justify-start items-center hover:bg-[#FFFF] my-5 px-20 group py-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 10.75H17C14.58 10.75 13.25 9.42 13.25 7V5C13.25 2.58 14.58 1.25 17 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM17 2.75C15.42 2.75 14.75 3.42 14.75 5V7C14.75 8.58 15.42 9.25 17 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 22.75H17C14.58 22.75 13.25 21.42 13.25 19V17C13.25 14.58 14.58 13.25 17 13.25H19C21.42 13.25 22.75 14.58 22.75 17V19C22.75 21.42 21.42 22.75 19 22.75ZM17 14.75C15.42 14.75 14.75 15.42 14.75 17V19C14.75 20.58 15.42 21.25 17 21.25H19C20.58 21.25 21.25 20.58 21.25 19V17C21.25 15.42 20.58 14.75 19 14.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M7 22.75H5C2.58 22.75 1.25 21.42 1.25 19V17C1.25 14.58 2.58 13.25 5 13.25H7C9.42 13.25 10.75 14.58 10.75 17V19C10.75 21.42 9.42 22.75 7 22.75ZM5 14.75C3.42 14.75 2.75 15.42 2.75 17V19C2.75 20.58 3.42 21.25 5 21.25H7C8.58 21.25 9.25 20.58 9.25 19V17C9.25 15.42 8.58 14.75 7 14.75H5Z"
+                fill="#CCD2E3"
+              />
+            </svg>
+            <p className="text-[#FFF] font-semibold group-hover:text-[blue]  ">
+              Reports
+            </p>
+          </div>
+
+          <div className="flex gap-2 justify-center items-center hover:bg-[#FFFF] my-5 px-26 ml-10 group py-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 10.75H17C14.58 10.75 13.25 9.42 13.25 7V5C13.25 2.58 14.58 1.25 17 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM17 2.75C15.42 2.75 14.75 3.42 14.75 5V7C14.75 8.58 15.42 9.25 17 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 22.75H17C14.58 22.75 13.25 21.42 13.25 19V17C13.25 14.58 14.58 13.25 17 13.25H19C21.42 13.25 22.75 14.58 22.75 17V19C22.75 21.42 21.42 22.75 19 22.75ZM17 14.75C15.42 14.75 14.75 15.42 14.75 17V19C14.75 20.58 15.42 21.25 17 21.25H19C20.58 21.25 21.25 20.58 21.25 19V17C21.25 15.42 20.58 14.75 19 14.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M7 22.75H5C2.58 22.75 1.25 21.42 1.25 19V17C1.25 14.58 2.58 13.25 5 13.25H7C9.42 13.25 10.75 14.58 10.75 17V19C10.75 21.42 9.42 22.75 7 22.75ZM5 14.75C3.42 14.75 2.75 15.42 2.75 17V19C2.75 20.58 3.42 21.25 5 21.25H7C8.58 21.25 9.25 20.58 9.25 19V17C9.25 15.42 8.58 14.75 7 14.75H5Z"
+                fill="#CCD2E3"
+              />
+            </svg>
+            <div className="flex flex-row gap-2 ">
+              <p className="text-[#FFF] font-semibold  group-hover:text-[blue]  ">
+                Accounts Recievable
+              </p>
+            </div>
+          </div>
+
+          <div className="flex gap-2 justify-center items-center hover:bg-[#FFFF] my-5 px-26 ml-4  group py-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10.75H5C2.58 10.75 1.25 9.42 1.25 7V5C1.25 2.58 2.58 1.25 5 1.25H7C9.42 1.25 10.75 2.58 10.75 5V7C10.75 9.42 9.42 10.75 7 10.75ZM5 2.75C3.42 2.75 2.75 3.42 2.75 5V7C2.75 8.58 3.42 9.25 5 9.25H7C8.58 9.25 9.25 8.58 9.25 7V5C9.25 3.42 8.58 2.75 7 2.75H5Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 10.75H17C14.58 10.75 13.25 9.42 13.25 7V5C13.25 2.58 14.58 1.25 17 1.25H19C21.42 1.25 22.75 2.58 22.75 5V7C22.75 9.42 21.42 10.75 19 10.75ZM17 2.75C15.42 2.75 14.75 3.42 14.75 5V7C14.75 8.58 15.42 9.25 17 9.25H19C20.58 9.25 21.25 8.58 21.25 7V5C21.25 3.42 20.58 2.75 19 2.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M19 22.75H17C14.58 22.75 13.25 21.42 13.25 19V17C13.25 14.58 14.58 13.25 17 13.25H19C21.42 13.25 22.75 14.58 22.75 17V19C22.75 21.42 21.42 22.75 19 22.75ZM17 14.75C15.42 14.75 14.75 15.42 14.75 17V19C14.75 20.58 15.42 21.25 17 21.25H19C20.58 21.25 21.25 20.58 21.25 19V17C21.25 15.42 20.58 14.75 19 14.75H17Z"
+                fill="#CCD2E3"
+              />
+              <path
+                d="M7 22.75H5C2.58 22.75 1.25 21.42 1.25 19V17C1.25 14.58 2.58 13.25 5 13.25H7C9.42 13.25 10.75 14.58 10.75 17V19C10.75 21.42 9.42 22.75 7 22.75ZM5 14.75C3.42 14.75 2.75 15.42 2.75 17V19C2.75 20.58 3.42 21.25 5 21.25H7C8.58 21.25 9.25 20.58 9.25 19V17C9.25 15.42 8.58 14.75 7 14.75H5Z"
+                fill="#CCD2E3"
+              />
+            </svg>
+            <p className="text-[#FFF] font-semibold group-hover:text-[blue]  ">
+              Accounts Payable
+            </p>
+          </div>
+
+          <div className="container mx-auto flex  flex-row items-center hover:bg-[#FFFF] my-5 px-20">
+            <img className="w-[60px]" src="/images/profile-picture.png" />
+
+            <div className="flex flex-row items-center gap-4 bg-[#5979BC] p-2 h-14 px-8 rounded-md">
+              <p className="text-[#FFFF]">JhonDoe</p>
+
+              <div>
+                <svg
+                  width="9"
+                  height="18"
+                  viewBox="0 0 9 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0.748751 0.000390321C0.938751 0.000390337 1.12875 0.07039 1.27875 0.22039L7.79875 6.74039C8.85875 7.80039 8.85875 9.54039 7.79875 10.6004L1.27875 17.1204C0.988749 17.4104 0.50875 17.4104 0.21875 17.1204C-0.0712499 16.8304 -0.0712499 16.3504 0.21875 16.0604L6.73875 9.54039C7.21875 9.06039 7.21875 8.28039 6.73875 7.80039L0.218751 1.28039C-0.0712485 0.99039 -0.0712485 0.51039 0.218751 0.22039C0.368751 0.0803902 0.558752 0.000390304 0.748751 0.000390321Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
-        <div>
-          <div className="flex justify-between">
+        <div className="relative">
+          <div className="absolute -left-10 flex justify-center items-center bg-[#50B476] rounded-full w-[60px] py-5 px-5">
+            <svg
+              width="9"
+              height="18"
+              viewBox="0 0 9 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.748751 0.000390321C0.938751 0.000390337 1.12875 0.07039 1.27875 0.22039L7.79875 6.74039C8.85875 7.80039 8.85875 9.54039 7.79875 10.6004L1.27875 17.1204C0.988749 17.4104 0.50875 17.4104 0.21875 17.1204C-0.0712499 16.8304 -0.0712499 16.3504 0.21875 16.0604L6.73875 9.54039C7.21875 9.06039 7.21875 8.28039 6.73875 7.80039L0.218751 1.28039C-0.0712485 0.99039 -0.0712485 0.51039 0.218751 0.22039C0.368751 0.0803902 0.558752 0.000390304 0.748751 0.000390321Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <div className="flex justify-between items-center">
             <div className="pl-8 py-6">
-              <p className="text-[#12395C] text-[1.5rem] font-bold ">
+              <p className="text-[#12395C] text-[ group-hover:text-[blue] text-[1.5rem] font-bold">
                 Accounts
               </p>
             </div>
-            <div className=" px-8 py-4">
-              <button className="bg-[#50B476] border rounded-xl text-[#FFF] p-2">
-                Create Account
-              </button>
+            <div className=" flex justify-center items-center px-8 py-4">
+              <div className="flex flex-row items-center gap-8">
+                <button className="bg-[#50B476] border rounded-2xl text-[#FFF] p-2 px-10">
+                  Create Account
+                </button>
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 28 28"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.9424 23.8953C11.2396 23.8953 8.53682 23.4661 5.97322 22.6077C4.99882 22.2713 4.25642 21.5869 3.93162 20.6937C3.59522 19.8005 3.71122 18.8145 4.24482 17.9329L5.57882 15.7173C5.85722 15.2533 6.11242 14.3253 6.11242 13.7801V10.4277C6.11242 6.11246 9.62722 2.59766 13.9424 2.59766C18.2576 2.59766 21.7724 6.11246 21.7724 10.4277V13.7801C21.7724 14.3137 22.0276 15.2533 22.306 15.7289L23.6284 17.9329C24.1272 18.7681 24.22 19.7773 23.8836 20.6937C23.5472 21.6101 22.8164 22.3061 21.9 22.6077C19.348 23.4661 16.6452 23.8953 13.9424 23.8953ZM13.9424 4.33766C10.59 4.33766 7.85242 7.06366 7.85242 10.4277V13.7801C7.85242 14.6269 7.50442 15.8797 7.07522 16.6105L5.74122 18.8261C5.48602 19.2553 5.41642 19.7077 5.56722 20.0905C5.70642 20.4849 6.05442 20.7865 6.53002 20.9489C11.3788 22.5729 16.5176 22.5729 21.3664 20.9489C21.784 20.8097 22.1088 20.4965 22.2596 20.0789C22.4104 19.6613 22.3756 19.2089 22.1436 18.8261L20.8096 16.6105C20.3688 15.8565 20.0324 14.6153 20.0324 13.7685V10.4277C20.0324 7.06366 17.3064 4.33766 13.9424 4.33766Z"
+                    fill="#12395C"
+                  />
+                  <path
+                    d="M16.1012 4.65082C16.02 4.65082 15.9388 4.63922 15.8576 4.61602C15.5212 4.52322 15.1964 4.45362 14.8832 4.40722C13.8972 4.27962 12.946 4.34922 12.0528 4.61602C11.728 4.72042 11.38 4.61602 11.1596 4.37242C10.9392 4.12882 10.8696 3.78082 10.9972 3.46762C11.4728 2.24962 12.6328 1.44922 13.9552 1.44922C15.2776 1.44922 16.4376 2.23802 16.9132 3.46762C17.0292 3.78082 16.9712 4.12882 16.7508 4.37242C16.5768 4.55802 16.3332 4.65082 16.1012 4.65082Z"
+                    fill="#12395C"
+                  />
+                  <path
+                    d="M13.9438 26.5395C12.7954 26.5395 11.6817 26.0755 10.8697 25.2635C10.0577 24.4515 9.59375 23.3379 9.59375 22.1895H11.3338C11.3338 22.8739 11.6121 23.5467 12.0993 24.0339C12.5865 24.5211 13.2594 24.7995 13.9438 24.7995C15.3822 24.7995 16.5538 23.6279 16.5538 22.1895H18.2938C18.2938 24.5907 16.345 26.5395 13.9438 26.5395Z"
+                    fill="#12395C"
+                  />
+                </svg>
+
+                <svg
+                  width="26"
+                  height="27"
+                  viewBox="0 0 26 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.5 24.5996C6.38056 24.5996 6.26031 24.5728 6.14738 24.5192C5.86706 24.3835 5.6875 24.0999 5.6875 23.7871V19.7246H3.25C1.90612 19.7246 0.8125 18.631 0.8125 17.2871V4.28711C0.8125 2.94323 1.90612 1.84961 3.25 1.84961H22.75C24.0939 1.84961 25.1875 2.94323 25.1875 4.28711V17.2871C25.1875 18.631 24.0939 19.7246 22.75 19.7246H12.8789L7.00781 24.4217C6.86075 24.5395 6.68119 24.5996 6.5 24.5996ZM3.25 3.47461C2.8015 3.47461 2.4375 3.83942 2.4375 4.28711V17.2871C2.4375 17.7348 2.8015 18.0996 3.25 18.0996H6.5C6.94931 18.0996 7.3125 18.4628 7.3125 18.9121V22.0971L12.0859 18.2775C12.2306 18.1622 12.4085 18.0996 12.5938 18.0996H22.75C23.1985 18.0996 23.5625 17.7348 23.5625 17.2871V4.28711C23.5625 3.83942 23.1985 3.47461 22.75 3.47461H3.25Z"
+                    fill="#12395C"
+                  />
+                  <path
+                    d="M19.5 9.97461H6.5C6.05069 9.97461 5.6875 9.61061 5.6875 9.16211C5.6875 8.71361 6.05069 8.34961 6.5 8.34961H19.5C19.9493 8.34961 20.3125 8.71361 20.3125 9.16211C20.3125 9.61061 19.9493 9.97461 19.5 9.97461Z"
+                    fill="#12395C"
+                  />
+                  <path
+                    d="M13 13.2246H6.5C6.05069 13.2246 5.6875 12.8606 5.6875 12.4121C5.6875 11.9636 6.05069 11.5996 6.5 11.5996H13C13.4493 11.5996 13.8125 11.9636 13.8125 12.4121C13.8125 12.8606 13.4493 13.2246 13 13.2246Z"
+                    fill="#12395C"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
+
           <div className=" pl-8 py-6">
-            <p className="text-[#50B476] font-semibold">Breadcrumbs</p>
+            <p className="text-[#50B476] font-semibold group-hover:text-[blue] underline">
+              Breadcrumbs
+            </p>
           </div>
 
           <div className="flex flex-row gap-4">
@@ -119,6 +603,16 @@ function Firstpage() {
                 Apply Filter
               </button>
             </div>
+            <div className="switch"></div>
+          </div>
+          <div className="my-10" style={{ height: 400, width: "100%" }}>
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={5}
+              rowsPerPageOptions={[5]}
+              checkboxSelection
+            />
           </div>
         </div>
       </div>
